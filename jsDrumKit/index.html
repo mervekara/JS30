@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> JavaScript Drum Kit </title>
+    <link rel="stykesheet" href="style/style.css">
+
+</head>
+<body>
+    <div class="keys">
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">hihat</span>
+        </div>
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">kick</span>
+        </div>    
+    </div>
+    <audio data-key="65" src="sounds/clap.mp3"></audio>
+
+<script>
+    window.addEventListener('keydown', function(e) {
+        // console.log(e.key + ' : ' + e.keyCode);
+        // querySelector -> Get the first element in the document with class="example":
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        if (!audio) return; // stop function from all together
+        audio.currenTime = 0; //rewind to the start
+        audio.play();
+    });
+</script>
+
+</body>
+</html>
